@@ -27,7 +27,20 @@ module Enumerable
     end
     false
   end
-  
+
+  def my_count
+    count = 0
+
+    if block_given?
+      my_each do |value|
+        count += 1 if yield(value)
+      end
+    else
+      my_each { |_| count += 1 }
+    end
+
+    count
+  end
 end
 
 # You will first have to define my_each
