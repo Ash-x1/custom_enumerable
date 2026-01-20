@@ -7,6 +7,7 @@ module Enumerable
     end
     result
   end
+  
   def my_all?
     result = true
 
@@ -19,6 +20,14 @@ module Enumerable
 
     result
   end
+
+  def my_any?
+    my_each do |element|
+      return true if yield(element)
+    end
+    false
+  end
+  
 end
 
 # You will first have to define my_each
