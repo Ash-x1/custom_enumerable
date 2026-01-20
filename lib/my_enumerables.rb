@@ -1,13 +1,5 @@
 module Enumerable
   # Your code goes here
-  def my_enum
-    result = []
-    my_each do |array|
-      result << yield(array) 
-    end
-    result
-  end
-  
   def my_all?
     result = true
 
@@ -77,6 +69,25 @@ module Enumerable
       my_each do |value|
         result << yield(value)
       end
+    end
+
+    result
+  end
+
+  def my_none?
+    my_each do |element|
+      return false if yield(element)
+    end
+    true
+  end
+
+   def my_select
+    return to_enum(:my_select) unless block_given?
+
+    result = []
+
+    my_each do |element|
+      result << element if yield(element)
     end
 
     result
