@@ -53,6 +53,16 @@ module Enumerable
 
     self
   end
+
+  def my_inject(initial)
+    accum = initial
+
+    my_each do |element|
+      accum = yield(accum, element)
+    end
+
+    accum
+  end
 end
 
 # You will first have to define my_each
