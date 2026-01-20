@@ -1,6 +1,6 @@
 module Enumerable
   # Your code goes here
-  def my_each
+  def my_enum
     result = []
     my_each do |array|
       result << yield(array) 
