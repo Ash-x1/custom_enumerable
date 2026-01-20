@@ -63,6 +63,24 @@ module Enumerable
 
     accum
   end
+
+  def my_map(proc_symbol = nil)
+    return to_enum(:my_map) unless block_given? || proc_symbol
+
+    result = []
+
+    if proc_symbol
+      my_each do |value|
+        result << value.send(proc_symbol)
+      end
+    else
+      my_each do |value|
+        result << yield(value)
+      end
+    end
+
+    result
+  end
 end
 
 # You will first have to define my_each
