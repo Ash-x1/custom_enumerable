@@ -1,9 +1,11 @@
 module Enumerable
   # Your code goes here
   def my_each
-    self.each do |array|
-      p yield(array)
+    result = []
+    my_each do |array|
+      result << yield(array) 
     end
+    result
   end
 end
 
@@ -15,5 +17,11 @@ class Array
   # Define my_each here
   def my_each
     return to_enum(:my_each) unless block_given?
+
+    i = 0
+    while i < self.length
+      yield(self[i])
+      i += 1
+    end
   end
 end
