@@ -7,6 +7,18 @@ module Enumerable
     end
     result
   end
+  def my_all?
+    result = true
+
+    my_each do |value|
+      unless yield(value)
+        result = false
+        break
+      end
+    end
+
+    result
+  end
 end
 
 # You will first have to define my_each
